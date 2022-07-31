@@ -3,15 +3,14 @@ import { tripsService } from "../Services/TripsService.js";
 
 function _draw() {
     let trips = ProxyState.trips;
-    console.log(trips);
-    let reservations = ProxyState.reservations.sort(
-        (rA, rB) => Number(rA.date) - Number(rB.date),
-    );
+    let reservations = ProxyState.reservations;
     let tripsTemplate = '';
     let reservationsTemplate = '';
 
     trips.forEach(t => tripsTemplate += t.TripTemplate);
     document.getElementById("app").innerHTML = tripsTemplate;
+
+    console.log(reservations);
 
     let costs = [];
     reservations.forEach(r => {
@@ -35,6 +34,7 @@ function _draw() {
 }
 
 function _onDataChange() {
+    _sortReservations();
     _saveState();
     _draw();
 }
@@ -42,6 +42,12 @@ function _onDataChange() {
 function _saveState() {
     window.localStorage.setItem('wayfair_data', JSON.stringify({ trips: ProxyState.trips, reservations: ProxyState.reservations }));
 }
+
+function _sortReservations() {
+    ProxyState.reservations.sort(
+        (rA, rB) => Number(rA.date) - Number(rB.date),
+    );
+  }
 
 export class TripsController {
     constructor() {
@@ -67,5 +73,10 @@ export class TripsController {
 
     updateShow(id, show) {
         tripsService.updateShow(id, show);
+    }
+
+    clearLocalStorage() {
+        window.localStorage.clear();
+        console.log("Local storage has been cleared.");
     }
 }

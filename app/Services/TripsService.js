@@ -3,10 +3,6 @@ import { Trip } from "../Models/Trip.js";
 import { Reservation } from "../Models/Reservation.js";
 import { generateId } from "../Utils/generateId.js"
 
-function _saveState() {
-    window.localStorage.setItem('wayfair_data', JSON.stringify({ trips: ProxyState.trips, reservations: ProxyState.reservations }));
-}
-
 class TripsService {
     addTrip(name) {
         let trip = new Trip(name, "");
@@ -29,7 +25,7 @@ class TripsService {
     saveNotes(id, notes) {
         const tripIndex = ProxyState.trips.findIndex((t) => t.id === id);
         ProxyState.trips[tripIndex].notes = notes;
-        _saveState();
+        ProxyState.flag = generateId();
     }
 
     updateShow(id, show) {
