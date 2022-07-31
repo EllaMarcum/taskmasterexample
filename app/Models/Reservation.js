@@ -21,7 +21,7 @@ export class Reservation {
               <div class="col-3">${this.address}</div>
               <div class="col-1">${this.formatDate(this.date)}</div>
               <div class="col-1">$${this.cost}</div>
-              <div class="col-1"><button onClick="javascript:app.reservationsController.deleteReservation('${this.id}');">Delete</button></div>
+              <div class="col-1 d-flex flex-row-reverse"><button onClick="javascript:app.reservationsController.deleteReservation('${this.id}');">🗑️</button></div>
             </div>
             `;
     }

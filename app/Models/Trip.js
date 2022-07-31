@@ -45,17 +45,19 @@ export class Trip {
                 </div>
                 <div id="${this.id}">
                 </div>
-                <div class="row">
-                  <div class="col">
-                    Notes
+                <div class="notes-container">
+                  <div class="row">
+                    <div class="col">
+                      Notes
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <textarea id="notes-field_${this.id}">${this.notes}</textarea>
-                    <button type="button" onClick="javascript:app.tripsController.saveNotes('${this.id}', document.getElementById('notes-field_${this.id}').value);">Save Notes</button>
-                  </div>
-                  <div class="col-6">
+                  <div class="row">
+                    <div class="col-6">
+                      <textarea class="notes-field" id="notes-field_${this.id}">${this.notes}</textarea>
+                      <button type="button" onClick="javascript:app.tripsController.saveNotes('${this.id}', document.getElementById('notes-field_${this.id}').value);">Save Notes</button>
+                    </div>
+                    <div class="col-6">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -90,8 +92,8 @@ export class Trip {
                 <div class="col-1">
                   <input type="number" class="form-control" id="reservationCost_${this.id}" required>
                 </div>
-                <div class="col-1">
-                  <input type="submit" value="Add Reservation">
+                <div class="col-1 d-flex flex-row-reverse">
+                  <input class="rounded" type="submit" value="Add">
                 </div>
               </div>
             </form>
