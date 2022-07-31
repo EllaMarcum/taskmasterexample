@@ -10,8 +10,6 @@ function _draw() {
     trips.forEach(t => tripsTemplate += t.TripTemplate);
     document.getElementById("app").innerHTML = tripsTemplate;
 
-    console.log(reservations);
-
     let costs = [];
     reservations.forEach(r => {
         let reservations = document.getElementById(r.tripId);
