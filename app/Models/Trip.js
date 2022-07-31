@@ -35,7 +35,7 @@ export class Trip {
                 </div>
               </div>
               <div class="collapse ${this.show === '➖' ? 'show' : ''}" id="trip-body_${this.id}">
-                <div class="row hide-when-small reservation-table-header">
+                <div class="row reservation-table-header d-none d-md-flex">
                   <div class="col-1"><h4>Type</h4></div>
                   <div class="col-2"><h4>Name</h4></div>
                   <div class="col-3"><h4>Confirmation Number</h4></div>
@@ -71,7 +71,7 @@ export class Trip {
     return `
             <form action="javascript:app.reservationsController.addReservation('${this.id}', reservationType_${this.id}.value, reservationName_${this.id}.value, reservationConfNum_${this.id}.value, reservationAddress_${this.id}.value, reservationDate_${this.id}.value, reservationCost_${this.id}.value);">
               <div class="row reservation-form-card">
-                <div class="col-1">
+                <div class="col-3 col-md-1">
                   <select class="form-control" id="reservationType_${this.id}" required>
                     <option value="HOTEL">HOTEL</option>
                     <option value="CAR">CAR</option>
@@ -79,22 +79,22 @@ export class Trip {
                     <option value="PLANE">PLANE</option>
                   </select>
                 </div>
-                <div class="col-2">
+                <div class="col-4 col-md-2">
                   <input type="text" class="form-control" id="reservationName_${this.id}" required>
                 </div>
-                <div class="col-3">
+                <div class="col-5 col-md-3">
                   <input type="text" class="form-control" id="reservationConfNum_${this.id}" required>
                 </div>
-                <div class="col-3">
+                <div class="col-7 col-md-3">
                   <input type="text" class="form-control" id="reservationAddress_${this.id}" required>
                 </div>
-                <div class="col-1">
+                <div class="col-5 col-md-1">
                   <input type="date" class="form-control" id="reservationDate_${this.id}" value="${this.formatDate(new Date())}" required>
                 </div>
-                <div class="col-1">
+                <div class="col-12 col-md-1">
                   <input type="number" class="form-control" id="reservationCost_${this.id}" required>
                 </div>
-                <div class="col-1 d-flex flex-row-reverse">
+                <div class="col-12 col-md-1 d-flex flex-row-reverse">
                   <input class="rounded" type="submit" value="Add">
                 </div>
               </div>
