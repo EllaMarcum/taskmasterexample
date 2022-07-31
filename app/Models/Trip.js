@@ -56,7 +56,8 @@ export class Trip {
                       <textarea class="notes-field" id="notes-field_${this.id}">${this.notes}</textarea>
                       <button type="button" onClick="javascript:app.tripsController.saveNotes('${this.id}', document.getElementById('notes-field_${this.id}').value);">Save Notes</button>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 d-flex flex-row-reverse">
+                      <h3 id="total-cost_${this.id}"></h3>
                     </div>
                   </div>
                 </div>

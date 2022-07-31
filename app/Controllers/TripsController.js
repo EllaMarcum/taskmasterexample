@@ -12,20 +12,26 @@ function _draw() {
     trips.forEach(t => tripsTemplate += t.TripTemplate);
     document.getElementById("app").innerHTML = tripsTemplate;
 
-    let totalCost = 0;
+    let costs = [];
     reservations.forEach(r => {
-        totalCost += r.cost;
         let reservations = document.getElementById(r.tripId);
         if (reservations.innerHTML) {
             document.getElementById(r.tripId).innerHTML += r.ReservationTemplate;
         }
+        
+        if (costs[r.tripId]) {
+            costs[r.tripId] += r.cost;
+        } else {
+            costs[r.tripId] = r.cost;
+        }
     });
+
+    console.log(costs)
 
     trips.forEach(t => {
         document.getElementById(t.id).innerHTML += t.ReservationFormTemplate;
+        document.getElementById(`total-cost_${t.id}`).innerHTML += `Total: $${costs[t.id]}`;
     });
-
-    document.getElementById('totalCost').innerHTML = `$${totalCost}`;
 }
 
 function _onDataChange() {
