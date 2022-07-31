@@ -10,13 +10,20 @@ function _draw() {
     trips.forEach(t => tripsTemplate += t.TripTemplate);
     document.getElementById("app").innerHTML = tripsTemplate;
 
+    let totalCost = 0;
     reservations.forEach(r => {
-        document.getElementById(r.tripId).innerHTML += r.ReservationTemplate;
+        totalCost += r.cost;
+        let reservations = document.getElementById(r.tripId);
+        if (reservations.innerHTML) {
+            document.getElementById(r.tripId).innerHTML += r.ReservationTemplate;
+        }
     });
 
     trips.forEach(t => {
         document.getElementById(t.id).innerHTML += t.ReservationFormTemplate;
     });
+
+    document.getElementById('totalCost').innerHTML = `$${totalCost}`;
 }
 
 function _onDataChange() {
@@ -25,7 +32,11 @@ function _onDataChange() {
 }
 
 function _saveState() {
-    window.localStorage.setItem('wayfair_data', JSON.stringify({trips: ProxyState.trips, reservations: ProxyState.reservations}));
+    ProxyState.reservations.sort(
+        (rA, rB) => Number(rA.date) - Number(rB.date),
+    );
+
+    window.localStorage.setItem('wayfair_data', JSON.stringify({ trips: ProxyState.trips, reservations: ProxyState.reservations }));
 }
 
 export class TripsController {
@@ -35,11 +46,17 @@ export class TripsController {
         _draw();
     }
 
-    addTrip(name, notes) {
-        tripsService.addTrip(name, notes);
+    addTrip(name) {
+        if (name.length > 2 && name.length < 16) {
+            tripsService.addTrip(name);
+        }
     }
 
     deleteTrip(id) {
         tripsService.deleteTrip(id);
+    }
+
+    saveNotes(id, notes) {
+        tripsService.saveNotes(id, notes);
     }
 }

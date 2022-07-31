@@ -19,8 +19,9 @@ export class Reservation {
               <div class="col-2">${this.name}</div>
               <div class="col-3">${this.confNumber}</div>
               <div class="col-3">${this.address}</div>
-              <div class="col-2">${this.formatDate(this.date)}</div>
-              <div class="col-1">${this.cost}</div>
+              <div class="col-1">${this.formatDate(this.date)}</div>
+              <div class="col-1">$${this.cost}</div>
+              <div class="col-1"><button onClick="javascript:app.reservationsController.deleteReservation('${this.id}');">Delete</button></div>
             </div>
             `;
     }
