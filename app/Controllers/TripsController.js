@@ -3,7 +3,9 @@ import { tripsService } from "../Services/TripsService.js";
 
 function _draw() {
     let trips = ProxyState.trips;
-    let reservations = ProxyState.reservations;
+    let reservations = ProxyState.reservations.sort(
+        (rA, rB) => Number(rA.date) - Number(rB.date),
+    );
     let tripsTemplate = '';
     let reservationsTemplate = '';
 
@@ -32,10 +34,6 @@ function _onDataChange() {
 }
 
 function _saveState() {
-    const sortedAsc = ProxyState.reservations.sort(
-        (rA, rB) => Number(rA.date) - Number(rB.date),
-    );
-
     window.localStorage.setItem('wayfair_data', JSON.stringify({ trips: ProxyState.trips, reservations: ProxyState.reservations }));
 }
 

@@ -3,10 +3,6 @@ import { Trip } from "../Models/Trip.js";
 import { Reservation } from "../Models/Reservation.js";
 
 function _saveState() {
-    const sortedAsc = ProxyState.reservations.sort(
-        (rA, rB) => Number(rA.date) - Number(rB.date),
-    );
-    
     window.localStorage.setItem('wayfair_data', JSON.stringify({ trips: ProxyState.trips, reservations: ProxyState.reservations }));
 }
 
