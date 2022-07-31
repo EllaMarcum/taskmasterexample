@@ -25,9 +25,6 @@ class AppState extends EventEmitter {
   constructor() {
     super();
 
-    // Used to clear the local storage then comment back out.
-    //window.localStorage.clear();
-
     const state = _loadState();
     if (state) {
       this.flag = '';

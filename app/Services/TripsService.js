@@ -26,6 +26,7 @@ class TripsService {
         const tripIndex = ProxyState.trips.findIndex((t) => t.id === id);
         ProxyState.trips[tripIndex].notes = notes;
         ProxyState.flag = generateId();
+        alert("Notes saved.");
     }
 
     updateShow(id, show) {
