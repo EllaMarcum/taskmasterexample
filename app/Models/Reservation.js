@@ -14,7 +14,7 @@ export class Reservation {
 
     get ReservationTemplate() {
         return `
-        <div class="row">
+            <div class="row reservation-card shadow-sm rounded">
               <div class="col-1">${this.type}</div>
               <div class="col-2">${this.name}</div>
               <div class="col-3">${this.confNumber}</div>
