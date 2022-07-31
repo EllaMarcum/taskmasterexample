@@ -37,11 +37,11 @@ export class Trip {
               <div class="collapse ${this.show === '➖' ? 'show' : ''}" id="trip-body_${this.id}">
                 <div class="row reservation-table-header d-none d-md-flex">
                   <div class="col-1"><h4>Type</h4></div>
-                  <div class="col-2"><h4>Name</h4></div>
-                  <div class="col-3"><h4>Confirmation Number</h4></div>
-                  <div class="col-3"><h4>Address</h4></div>
-                  <div class="col-1"><h4>Date</h4></div>
-                  <div class="col-1"><h4>Cost</h4></div>
+                  <div class="col-2 d-flex flex-row-reverse"><h4>Name</h4></div>
+                  <div class="col-3 d-flex flex-row-reverse"><h4>Confirmation Number</h4></div>
+                  <div class="col-3 d-flex flex-row-reverse"><h4>Address</h4></div>
+                  <div class="col-1 d-flex flex-row-reverse"><h4>Date</h4></div>
+                  <div class="col-1 d-flex flex-row-reverse"><h4>Cost</h4></div>
                   <div class="col-1"></div>
                 </div>
                 <div id="${this.id}">
@@ -73,26 +73,27 @@ export class Trip {
               <div class="row reservation-form-card">
                 <div class="col-3 col-md-1">
                   <select class="form-control" id="reservationType_${this.id}" required>
-                    <option value="HOTEL">HOTEL</option>
-                    <option value="CAR">CAR</option>
-                    <option value="SPA">SPA</option>
-                    <option value="PLANE">PLANE</option>
+                    <option value="" disabled selected>Type...</option>
+                    <option value="🏨">🏨</option>
+                    <option value="🏎️">🏎️</option>
+                    <option value="💆">💆</option>
+                    <option value="🛫">🛫</option>
                   </select>
                 </div>
                 <div class="col-4 col-md-2">
-                  <input type="text" class="form-control" id="reservationName_${this.id}" required>
+                  <input type="text" placeholder="Name..." class="form-control" id="reservationName_${this.id}" required>
                 </div>
                 <div class="col-5 col-md-3">
-                  <input type="text" class="form-control" id="reservationConfNum_${this.id}" required>
+                  <input type="text" placeholder="Confirmation #..." class="form-control" id="reservationConfNum_${this.id}" required>
                 </div>
                 <div class="col-7 col-md-3">
-                  <input type="text" class="form-control" id="reservationAddress_${this.id}" required>
+                  <input type="text" placeholder="Address..." class="form-control" id="reservationAddress_${this.id}" required>
                 </div>
                 <div class="col-5 col-md-1">
-                  <input type="date" class="form-control" id="reservationDate_${this.id}" value="${this.formatDate(new Date())}" required>
+                  <input type="date" placeholder="Date..." class="form-control" id="reservationDate_${this.id}" value="${this.formatDate(new Date())}" required>
                 </div>
                 <div class="col-12 col-md-1">
-                  <input type="number" class="form-control" id="reservationCost_${this.id}" required>
+                  <input type="number" placeholder="$0" class="form-control" id="reservationCost_${this.id}" required>
                 </div>
                 <div class="col-12 col-md-1 d-flex flex-row-reverse">
                   <input class="rounded" type="submit" value="Add">

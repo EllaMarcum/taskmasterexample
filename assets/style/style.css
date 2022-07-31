@@ -24,7 +24,11 @@ body {
 .reservation-card {
     background-color: #DBE2EF;
     margin: 16px 8px;
-    padding: 4px;
+}
+
+.reservation-card div {
+    font-weight: 500;
+    padding: 8px 16px;
 }
 
 .reservation-card button {
