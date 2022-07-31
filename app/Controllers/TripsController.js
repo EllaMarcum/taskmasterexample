@@ -32,7 +32,7 @@ function _onDataChange() {
 }
 
 function _saveState() {
-    ProxyState.reservations.sort(
+    const sortedAsc = ProxyState.reservations.sort(
         (rA, rB) => Number(rA.date) - Number(rB.date),
     );
 

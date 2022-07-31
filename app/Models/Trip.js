@@ -64,7 +64,12 @@ export class Trip {
             <form action="javascript:app.reservationsController.addReservation('${this.id}', reservationType_${this.id}.value, reservationName_${this.id}.value, reservationConfNum_${this.id}.value, reservationAddress_${this.id}.value, reservationDate_${this.id}.value, reservationCost_${this.id}.value);">
               <div class="row">
                 <div class="col-1">
-                  <input type="text" class="form-control" id="reservationType_${this.id}" required>
+                  <select class="form-control" id="reservationType_${this.id}" required>
+                    <option value="HOTEL">HOTEL</option>
+                    <option value="CAR">CAR</option>
+                    <option value="SPA">SPA</option>
+                    <option value="PLANE">PLANE</option>
+                  </select>
                 </div>
                 <div class="col-2">
                   <input type="text" class="form-control" id="reservationName_${this.id}" required>
