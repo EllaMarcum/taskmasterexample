@@ -5,6 +5,7 @@ export class Trip {
     this.id = generateId();
     this.name = name;
     this.notes = notes;
+    this.show = '➖';
   }
 
   formatDate(date) {
@@ -28,12 +29,12 @@ export class Trip {
                 <div class="col-10">
                   <h2 class='trip-name'>${this.name}</h2>
                 </div>
-                <div class="col-2 d-flex flex-row-reverse">
-                  <button onClick="javascript:app.tripsController.deleteTrip('${this.id}');">X</button>
-                  <button type="button" data-bs-toggle="collapse" data-bs-target="#trip-body_${this.id}" area-expanded="false" aria-controls="trip-body_${this.id}");">➖/➕</button>
+                <div class="col-2 d-flex flex-row-reverse expand-button">
+                  <button onClick="javascript:app.tripsController.deleteTrip('${this.id}');">✖️</button>
+                  <button id="expand-button_${this.id}" onClick="javascript:app.tripsController.updateShow('${this.id}','${this.show}');" type="button" data-bs-toggle="collapse" data-bs-target="#trip-body_${this.id}" area-expanded="false" aria-controls="trip-body_${this.id}");">${this.show}</button>
                 </div>
               </div>
-              <div class="collapse show" id="trip-body_${this.id}">
+              <div class="collapse ${this.show === '➖' ? 'show' : ''}" id="trip-body_${this.id}">
                 <div class="row hide-when-small reservation-table-header">
                   <div class="col-1"><h4>Type</h4></div>
                   <div class="col-2"><h4>Name</h4></div>
